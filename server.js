@@ -103,7 +103,7 @@ app.post('/orders', function(req, res) {
   const values = req.body
   console.log(values)
   connection.query(
-    'INSERT INTO a1_orders (Oid, Cid, Pid, qtt) VALUES ?', [values],
+    'INSERT INTO a1_orders (Oid, Cid, qtt, Cid) VALUES ?', [values],
     function(err, results) {
       console.log(results) //แสดงผลที่ console
       res.json(results) //ตอบกลับ request

@@ -56,7 +56,7 @@ app.get("/top_customers", function (req, res) {
   connection.query(
     `SELECT 
     C.firstname, 
-    SUM(O.QTY*P.Price) AS price_sum 
+    SUM(O.qtt*P.price) AS price_sum 
   FROM a1_customers AS C 
     INNER JOIN a1_orders AS O ON C.Cid = O.Cid 
     INNER JOIN a1_products AS P ON O.Pid = P.Pid 
@@ -73,7 +73,7 @@ app.get("/top_customers", function (req, res) {
 // เรียงลับดับจากคนที่ซื้อเยอะ => น้อยที่สุด
 app.get('/top_products', function(req, res){
   connection.query(
-    `SELECT O.id, P.Pname, O.qtt, SUM(O.QTY*P.Price) as Total_QTY FROM a1_Orders as O INNER JOIN a1_products as P ON O.Pid = P.Pid GROUP BY O.id, P.name, O.qtt, P.price ORDER BY Total_QTY DESC;`,
+    `SELECT O.id, P.Pname, O.qtt, SUM(O.qtt*P.price) as Total_QTY FROM a1_orders as O INNER JOIN a1_products as P ON O.Pid = P.Pid GROUP BY O.id, P.Pname, O.qtt, P.price ORDER BY Total_QTY DESC;`,
     function (err, results) {
       res.json(results);
     }

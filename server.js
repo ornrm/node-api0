@@ -31,7 +31,7 @@ app.get('/customers', function(req, res) {
   )
 })
 
-app.get('/orders', function(req, res) {
+app.get('/order', function(req, res) {
   connection.query(
     'SELECT * FROM a1_orders',
     function(err, results) {
@@ -103,7 +103,7 @@ app.post('/orders', function(req, res) {
   const values = req.body
   console.log(values)
   connection.query(
-    'INSERT INTO a1_orders (Oid, Cid, qtt, Cid) VALUES ?', [values],
+    'INSERT INTO a1_orders (Oid,Pid, qtt, Cid) VALUES ?', [values],
     function(err, results) {
       console.log(results) //แสดงผลที่ console
       res.json(results) //ตอบกลับ request

@@ -52,7 +52,7 @@ app.get('/products', function(req, res) {
 })
 
 // เรียงลับดับจากคนที่ซื้อเยอะ => น้อยที่สุด
-app.get("/top_customers", function (req, res) {
+app.get("/top_customer", function (req, res) {
   connection.query(
     `SELECT 
     C.firstname, 
